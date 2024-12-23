@@ -1,0 +1,49 @@
+####For Backend application
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: certscan-backend
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: https://kubernetes.default.svc
+  source:
+    path: BuildScripts/certscan-kubernetes-kustomize/backend-services/nfs
+    repoURL: >-
+      https://git-codecommit.us-east-2.amazonaws.com/v1/repos/cs-deployment-tools
+    targetRevision: koushik-integration
+    kustomize:
+      images: []
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+
+####For Frontend
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: certscan-frontend
+spec:
+  destination:
+    name: ''
+    namespace: default
+    server: https://kubernetes.default.svc
+  source:
+    path: BuildScripts/certscan-kubernetes-kustomize/frontend-services/nfs
+    repoURL: >-
+      https://git-codecommit.us-east-2.amazonaws.com/v1/repos/cs-deployment-tools
+    targetRevision: koushik-integration
+    kustomize:
+      images: []
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
