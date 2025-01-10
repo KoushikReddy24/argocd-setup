@@ -1,0 +1,13 @@
+helm package .
+helm repo update
+helm install
+helm version
+helm list --namespace cattle-system
+helm install rancher /home/ubuntu/rancher/rancher-2.9.2.tgz --namespace cattle-system
+helm uninstall rancher --namespace cattle-system
+helm install rancher /home/ubuntu/rancher/rancher-2.9.2.tgz --namespace cattle-system
+helm install rancher /home/ubuntu/rancher/rancher-2.9.2.tgz   --namespace cattle-system   --set hostname=rancher.my.org   --set bootstrapPassword=admin
+helm install rancher /home/ubuntu/rancher/rancher-2.9.2.tgz --namespace cattle-system
+helm list --namespace cattle-system
+helm uninstall rancher --namespace cattle-system
+helm install rancher /home/ubuntu/rancher/rancher-2.9.2.tgz   --namespace cattle-system   --set hostname=rancher.my.org   --set bootstrapPassword=admin
